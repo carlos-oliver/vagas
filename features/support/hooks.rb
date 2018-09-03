@@ -1,6 +1,8 @@
 Before do
   @login_page = LoginPage.new
   @editar_curriculo = EditarCurriculo.new
+  @upload = Upload.new
+  @contato = EditarContato.new
 end
 
 Before('@login') do
