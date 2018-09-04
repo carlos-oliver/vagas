@@ -12,7 +12,7 @@
   end
 
   Então("devo ver a mensagem {string}") do |mensagem|
-    expect(@editar_curriculo.msg_nome_completo).to have_content mensagem
+    expect(@editar_curriculo.msg_validate).to have_content mensagem
   end
 
   Dado("edito os dados pessoais com:") do |table|                                
@@ -25,9 +25,13 @@
                                                                                  
   Quando("atualizo os dados") do                                                 
     @editar_curriculo.dados_pessoais(@dt_nasc, @genero, @estado_civil, @filhos, @pais)
-    find('select[name="dados_pessoais[estado_civil]"]').find(:xpath, 'option[4]').select_option
-  end                                                                            
+  end
                                                                                  
-  Então("vejo a seguinte mensagem{string}") do |string|                          
-    pending # Write code here that turns the phrase above into concrete actions  
-  end                                                                            
+  Então("vejo a seguinte mensagem {string}") do |mensagem|                          
+    expect(@editar_curriculo.msg_validate).to have_content mensagem
+  end
+  
+  Então("vejo a seguinte mensagem de confirmação {string}") do |mensagem|
+    expect(@editar_curriculo.msg_confirmacao).to have_content mensagem
+  end
+  
