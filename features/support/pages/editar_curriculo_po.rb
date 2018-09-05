@@ -32,12 +32,30 @@ class EditarCurriculo
     find('input[value="feminino"]').click
     find('select[name="dados_pessoais[estado_civil]"]').find(:xpath, 'option['+ estado_civil + ']').select_option
     find('select[name="dados_pessoais[pais_de_nacionalidade]"').find(:xpath, 'option['+ pais +']').select_option
-
-    #find('#btn-add-doc').click
-    #find('select[name="dados_pessoais[documentos_attributes][1][pais_id]"]').find(:xpath, 'option[2]').select_option
-    #find('select[name="dados_pessoais[documentos_attributes][1][tipo_id]"]').find(:xpath, 'option[37]').select_option
-    #find('#dados_pessoais_documentos_attributes_0_numero').set numero 
     click_on 'Salvar'
   end
 
+#esse bloco está comentado pois a exclusão do documento possui um problema com isso não
+#consigo adicionar e excluir o documento para executar o script várias vezes  
+=begin
+  def adociona_documento
+    find('#btn-add-doc').click
+  end
+
+  def add_doc_select_by_text(value)
+    cat = find('select[id=dados_pessoais_documentos_attributes_0_pais_id]')
+    cat.click
+    cat.find('option', text: value).click
+  end 
+
+  def tipo_doc_select_by_text(value)
+    cat = find('select[id=dados_pessoais_documentos_attributes_0_tipo_id]')
+    cat.click
+    cat.find('option', text: value).click
+  end 
+
+  def numero_doc(numero)
+    find('#dados_pessoais_documentos_attributes_0_numero').set numero
+  end
+=end
 end

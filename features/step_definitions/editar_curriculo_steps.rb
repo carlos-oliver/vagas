@@ -26,6 +26,15 @@
   Quando("atualizo os dados") do                                                 
     @editar_curriculo.dados_pessoais(@dt_nasc, @genero, @estado_civil, @filhos, @pais)
   end
+=begin
+  Quando("adiciono um novo documento") do
+    @editar_curriculo.adociona_documento
+    @editar_curriculo.add_doc_select_by_text('Afeganistão')
+    @editar_curriculo.tipo_doc_select_by_text('Passport (AFG)')
+    @editar_curriculo.numero_doc('123456')
+    click_on 'Salvar'
+  end
+=end
                                                                                  
   Então("vejo a seguinte mensagem {string}") do |mensagem|                          
     expect(@editar_curriculo.msg_validate).to have_content mensagem
